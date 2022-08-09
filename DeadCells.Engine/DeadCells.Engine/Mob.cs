@@ -5,12 +5,15 @@
     private IWeapon? _weapon;
     private float _armor;
     private ICharacter? _character;
+    private int _level;
 
     public float Health => _health;
     public int Mana => _mana;
     public IWeapon? Weapon => _weapon;
     public float Armor => _armor;
     public ICharacter? Character => _character;
+
+    public int Level { get => _level; set => _level=value; }
 
     public void Attack(int damage)
     {
