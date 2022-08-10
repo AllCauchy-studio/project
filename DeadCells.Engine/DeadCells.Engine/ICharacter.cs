@@ -1,9 +1,9 @@
 ﻿public interface ICharacter
 {
-    public int Level { get; set; }
-    
-    public List<Item> Inventory { get; set; }
-    void TakeDamage(int damage);
+    public int Level { get; }
+
+    public Dictionary<string, Item> Inventory { get; }
+    void TakeDamage(float damage);
 
     void Heal(float value);
 
@@ -11,9 +11,9 @@
 
     void DodgeAttack();
 
-    void BlockAttack(int damage);
+    void BlockAttack(float damage);
 
-    void InteractWithObject();
+    bool TryInteractWithObject(object gameObject);
 
     void Attack(int damage);
 }

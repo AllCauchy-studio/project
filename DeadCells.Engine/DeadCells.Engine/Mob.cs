@@ -15,14 +15,13 @@
 
     public int Level { get => _level; set => _level=value; }
 
-    public void Attack(int damage)
+    public void Attack()
     {
-        Attacker.AttackCharacter(Character, damage);
+        Attacker.AttackCharacter(Character, _weapon.Damage);
     }
 
     public void TakeDamage(IWeapon weapon)
     {
-        _health -= weapon.Damage;
-        _armor -= weapon.Damage / 100;
+        _health -= (weapon.Damage - _armor);
     }
 }

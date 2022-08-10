@@ -8,7 +8,7 @@
         private float _armor;
         private IMob? _mob;
         private int _level;
-        private List<Item> _inventory;
+        private Dictionary<string, Item> _inventory;
         private const int MAX_MANA_VALUE = 100;
         private const int MAX_HEALTH_VALUE = 100;
 
@@ -17,23 +17,24 @@
         public IWeapon? Weapon => _weapon;
         public float Armor => _armor;
         public IMob? Mob => _mob;
-        public int Level { get => _level; set => _level = value; }
-        public List<Item>? Inventory { get => _inventory ??= new List<Item>(); set => _inventory ??= value; }
+        public int Level => _level;
+
+        public Dictionary<string, Item> Inventory => _inventory;
 
 
-        public Character(int health = MAX_HEALTH_VALUE, int mana = MAX_MANA_VALUE, IWeapon? weapon = null, int armor = 0, int level = 1, List<Item> inventory = null)
+        public Character(int health = MAX_HEALTH_VALUE, int mana = MAX_MANA_VALUE, IWeapon? weapon = null, int armor = 0, int level = 1, Dictionary<string, Item> inventory = null)
         {
             _health = health;
             _mana = mana;
             _weapon = weapon;
             _armor = armor;
             _level = level;
-            _inventory = inventory ?? new List<Item>();
+            _inventory = inventory ?? new Dictionary<string, Item>();
         }
 
-        public void BlockAttack(int damage)
+        public void BlockAttack(float damage)
         {
-            TakeDamage(damage / 10);
+            TakeDamage(damage * 8 / 10);
         }
 
         public void DodgeAttack()
@@ -46,9 +47,14 @@
             _health += value;
         }
 
-        public void InteractWithObject()
+        public bool TryInteractWithObject(object gameObject)
         {
-            throw new NotImplementedException();
+            if (gameObject is null)
+                return false;
+
+            //interaction 
+
+            return true;
         }
 
         public void Move()
@@ -56,10 +62,9 @@
             throw new NotImplementedException();
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
-            _health -= damage;
-            _armor -= damage / 100;
+            _health -= (damage - _armor);
         }
 
         public void Attack(int damage)

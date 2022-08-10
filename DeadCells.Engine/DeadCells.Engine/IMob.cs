@@ -1,7 +1,7 @@
 ﻿public interface IMob
 {
     public int Level { get; set; }
-    void Attack(int damage);
+    void Attack();
 
     void TakeDamage(IWeapon weapon);
 }
