@@ -1,6 +1,4 @@
-﻿using System;
-
-internal static class Attacker
+﻿internal static class Attacker
 {
     public static void AttackCharacter(ICharacter character, float damage)
     {
@@ -9,7 +7,6 @@ internal static class Attacker
 
         if (damage <= 0)
             throw new IndexOutOfRangeException("invalid damage value");
-
 
         character.TakeDamage(damage);
     }

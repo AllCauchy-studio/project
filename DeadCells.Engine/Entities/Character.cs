@@ -24,7 +24,6 @@ namespace DeadCells.Engine
 
         public Dictionary<string, Item> Inventory => _inventory;
 
-
         public Character(int health = MAX_HEALTH_VALUE, int mana = MAX_MANA_VALUE, IWeapon? weapon = null, int armor = 0, int level = 1, Dictionary<string, Item> inventory = null)
         {
             _health = health;
